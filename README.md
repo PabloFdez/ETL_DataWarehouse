@@ -30,4 +30,6 @@
   - Memo with all process and additional instrictions
   - Final strcuture
   
+  ![Example of usage: ](https://github.com/PabloFdez/ETL_DataWarehouse/blob/master/Additional%20Files/FinalStructure(TL).png)
+  
   
