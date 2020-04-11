@@ -1,0 +1,2615 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/14/2005 8:25:56 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JOYSRV-01"
+  DTS:CreatorName="JOYSRV-01\Joy Mundy"
+  DTS:DTSID="{2F78B91A-A4C0-4A46-9FD9-05FFC558E4DC}"
+  DTS:EnableConfig="True"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.4001.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Product_SQL"
+  DTS:PackageType="5"
+  DTS:ProtectionLevel="0"
+  DTS:VersionBuild="227"
+  DTS:VersionGUID="{66F5D536-504D-455E-B1D3-9E8EB9E460D4}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MDWT 2008]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A56F716C-E2CA-494E-BC4C-945F4AAA6621}"
+      DTS:ObjectName="MDWT 2008">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=MDWT_2008R2;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MDWT 2008 dotNet]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{05BA99CF-C0DD-42CC-BCD4-7F38D82F0061}"
+      DTS:ObjectName="MDWT 2008 dotNet">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=LocalHost;Initial Catalog=MDWT_2008R2;Integrated Security=True;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[MDWT 2008 Stage]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{FAFE21D1-07CB-4910-A22E-9DD89A9DE2E7}"
+      DTS:ObjectName="MDWT 2008 Stage">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=MDWT_2008R2_Stage;Provider=SQLNCLI11.1;Integrated Security=SSPI;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Configurations>
+    <DTS:Configuration
+      DTS:ConfigurationString="AuditKey"
+      DTS:ConfigurationVariable="\Package.Variables[User::ParentAuditKey].Properties[Value]"
+      DTS:CreationName=""
+      DTS:DTSID="{DD9E64BE-AAB3-437C-BA15-EDB3E7626A32}"
+      DTS:ObjectName="ParentAuditKey" />
+  </DTS:Configurations>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C84689E7-296C-4794-81A2-3A127DC51669}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="AuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{34ABDFE5-3793-4F68-B7C9-4476472D2A66}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="ErrorPath">
+      <DTS:VariableValue
+        DTS:DataType="8">c:\SSIStemp\Load_Product.raw</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{677E374B-5FCA-40B5-ABB1-9D35774E467F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractStartDate">
+      <DTS:VariableValue
+        DTS:DataType="7">1/1/1995</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{276D77F5-B6C8-425E-A020-ADD0F984B2D8}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ExtractStopDate">
+      <DTS:VariableValue
+        DTS:DataType="7">12/31/2005</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{00E6D80D-C064-4F2A-9275-24D35CD3E4E0}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="ParentAuditKey">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{05972778-5C36-43BC-B5E7-9038B2CE4E06}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="PKName">
+      <DTS:VariableValue
+        DTS:DataType="8">ProductKey</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F9B53C0B-0A9B-4DDD-A24D-2018E0701CA7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Error">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FF87720F-7D2D-41F6-A8A1-F76C4D8E8C4D}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Normal">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{01816977-4896-4F31-9DA8-707CA88AA57E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RC_Xtrct">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{96602EC6-7932-4048-AD8E-5706F555767E}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="RowCount">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0EFD07E3-C165-4997-8DF8-90DE93527A30}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="TableName">
+      <DTS:VariableValue
+        DTS:DataType="8">DimProduct</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">4,7,OnError,13,OnInformation,14,OnPostValidate,9,OnWarning</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnInformation"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPostValidate"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnWarning"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">-1</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Get AuditKey"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{36c9853f-9fd1-4d4a-ade9-ebca5cad8b3c}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Get AuditKey"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05BA99CF-C0DD-42CC-BCD4-7F38D82F0061}"
+          SQLTask:SqlStatementSource="INSERT INTO [DimAudit]&#xA;           (ParentAuditKey&#xA;           ,[TableName]&#xA;           ,[PkgName]&#xA;           ,[PkgGUID]&#xA;           ,[PkgVersionGUID]&#xA;           ,[PkgVersionMajor]&#xA;           ,[PkgVersionMinor]&#xA;           ,[ExecStartDT]&#xA;           ,[ExecStopDT]&#xA;           ,[ExecutionInstanceGUID]&#xA;           ,[ExtractRowCnt]&#xA;           ,[InsertRowCnt]&#xA;           ,[UpdateRowCnt]&#xA;           ,[ErrorRowCnt]&#xA;           ,[TableInitialRowCnt]&#xA;           ,[TableFinalRowCnt]&#xA;           ,[TableMaxSurrogateKey]&#xA;           ,[SuccessfulProcessingInd])&#xA;     VALUES&#xA;           (@ParentAuditKey&#xA;           ,@TableName&#xA;           ,@PkgName&#xA;           ,@PkgGUID&#xA;           ,@PkgVersionGUID&#xA;           ,@PkgVersionMajor&#xA;           ,@PkgVersionMinor&#xA;           ,@StartTime&#xA;           ,NULL&#xA;           ,@PkgExecGUID&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,NULL&#xA;           ,'N')&#xA;SELECT CAST(SCOPE_IDENTITY() AS INT) AS AuditKey&#xA;go&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::AuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="StartTime"
+            SQLTask:DtsVariableName="System::StartTime"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="26"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgGUID"
+            SQLTask:DtsVariableName="System::PackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionGUID"
+            SQLTask:DtsVariableName="System::VersionGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionMajor"
+            SQLTask:DtsVariableName="System::VersionMajor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgVersionMinor"
+            SQLTask:DtsVariableName="System::VersionMinor"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="PkgExecGUID"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="9"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="TableName"
+            SQLTask:DtsVariableName="User::TableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="16"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="ParentAuditKey"
+            SQLTask:DtsVariableName="User::ParentAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load DimProduct"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{39D8225F-9925-469E-96F3-E2F271DAC707}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load DimProduct"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server v9; (C) 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:ObjectData>
+        <pipeline
+          BLOBTempStoragePath=""
+          bufferTempStoragePath=""
+          engineThreads="5"
+          version="1">
+          <components>
+            <component
+              refId="Package\Load DimProduct\Bulk Load"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Bulk Load"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DimProduct\Bulk Load.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MDWT 2008]"
+                  connectionManagerRefId="Package.ConnectionManagers[MDWT 2008]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductSKU]"
+                      cachedDataType="i4"
+                      cachedName="ProductSKU"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductSKU]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSKU]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductDescr]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductDescr"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductDescr]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductDescr]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductModelID]"
+                      cachedDataType="i4"
+                      cachedName="ProductModelID"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModelID]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductSubcategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductSubcategoryID"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategoryID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductCategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductCategoryID"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategoryID]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategory"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategory]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategory]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="ProductLine"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductLine]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[Class]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Class"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Class]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[Style]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Style"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Style]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Style]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[IsFinishedGood]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="IsFinishedGood"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[IsFinishedGood]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[IsFinishedGood]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Size"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Size]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Size]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Weight]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[DaysToManufacture]"
+                      cachedDataType="i4"
+                      cachedName="DaysToManufacture"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[DaysToManufacture]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[DaysToManufacture]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[StandardCost]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ListPrice]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[SafetyStockLevel]"
+                      cachedDataType="i2"
+                      cachedName="SafetyStockLevel"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SafetyStockLevel]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SafetyStockLevel]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ReorderPoint]"
+                      cachedDataType="i2"
+                      cachedName="ReorderPoint"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ReorderPoint]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ReorderPoint]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellStartDate]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellEndDate]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductCurrentStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="ProductCurrentStatus"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductCurrentStatus]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCurrentStatus]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[InsertAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="InsertAuditKey"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[InsertAuditKey]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[UpdateAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="UpdateAuditKey"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[UpdateAuditKey]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductModel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModel"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModel]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[ProductSubcateogry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductSubcateogry"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategory]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcateogry]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[SizeUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="SizeUnitMeasureCode"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SizeUnitOfMeasureCode]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SizeUnitMeasureCode]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].Columns[WeightUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="WeightUnitMeasureCode"
+                      externalMetadataColumnId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[WeightUnitOfMeasureCode]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[WeightUnitMeasureCode]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductSKU]"
+                      dataType="i4"
+                      name="ProductSKU" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductDescr]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductDescr" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      dataType="wstr"
+                      length="50"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategoryID]"
+                      dataType="i4"
+                      name="ProductSubcategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductSubcategory" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      dataType="i4"
+                      name="ProductCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="10"
+                      name="ProductLine" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="20"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="20"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Style]"
+                      dataType="wstr"
+                      length="20"
+                      name="Style" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[IsFinishedGood]"
+                      dataType="wstr"
+                      length="20"
+                      name="IsFinishedGood" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="20"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SizeUnitOfMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="SizeUnitOfMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[WeightUnitOfMeasureCode]"
+                      dataType="wstr"
+                      length="5"
+                      name="WeightUnitOfMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[DaysToManufacture]"
+                      dataType="i4"
+                      name="DaysToManufacture" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SafetyStockLevel]"
+                      dataType="i2"
+                      name="SafetyStockLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ReorderPoint]"
+                      dataType="i2"
+                      name="ReorderPoint" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SellStartDate]"
+                      dataType="dbDate"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[SellEndDate]"
+                      dataType="dbDate"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[ProductCurrentStatus]"
+                      dataType="wstr"
+                      length="12"
+                      name="ProductCurrentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      dataType="i4"
+                      name="InsertAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      dataType="i4"
+                      name="UpdateAuditKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimProduct\Bulk Load.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Bulk Load.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Bulk Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Bulk Load.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimProduct\Count Errors"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts the rows in a dataset."
+              name="Count Errors">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">RC_Error</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load DimProduct\Count Errors.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimProduct\Count Errors.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load DimProduct\Count Errors.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimProduct\Log Error Rows"
+              componentClassID="Microsoft.RawDestination"
+              contactInfo="Loads raw data into a file.;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Loads raw data into a file."
+              name="Log Error Rows"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the file."
+                  name="AccessMode"
+                  typeConverter="AccessMode">1</property>
+                <property
+                  dataType="System.Null"
+                  description="Output file name"
+                  name="FileName"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.NonValidatingFileNameEditor" />
+                <property
+                  dataType="System.String"
+                  description="Name of the variable that contains the file name"
+                  name="FileNameVariable">User::ErrorPath</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates what option is used to write to the file."
+                  name="WriteOption"
+                  typeConverter="WriteOption">0</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input]"
+                  hasSideEffects="true"
+                  name="Raw File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductSKU]"
+                      cachedDataType="i4"
+                      cachedName="ProductSKU"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSKU]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductName]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductDescr]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductDescr"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductDescr]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductModelID]"
+                      cachedDataType="i4"
+                      cachedName="ProductModelID"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModelID]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductModel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModel"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModel]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductSubcategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductSubcategoryID"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductSubcateogry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductSubcateogry"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcateogry]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductCategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductCategoryID"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategoryID]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategory"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategory]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="ProductLine"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductLine]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Color]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[Class]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Class"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Class]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[Style]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Style"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Style]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[IsFinishedGood]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="IsFinishedGood"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[IsFinishedGood]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Size"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Size]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[SizeUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="SizeUnitMeasureCode"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SizeUnitMeasureCode]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Weight]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[WeightUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="WeightUnitMeasureCode"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[WeightUnitMeasureCode]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[DaysToManufacture]"
+                      cachedDataType="i4"
+                      cachedName="DaysToManufacture"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[DaysToManufacture]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[StandardCost]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ListPrice]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[SafetyStockLevel]"
+                      cachedDataType="i2"
+                      cachedName="SafetyStockLevel"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SafetyStockLevel]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ReorderPoint]"
+                      cachedDataType="i2"
+                      cachedName="ReorderPoint"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ReorderPoint]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellStartDate]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellEndDate]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ProductCurrentStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="ProductCurrentStatus"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCurrentStatus]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[InsertAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="InsertAuditKey"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[InsertAuditKey]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[UpdateAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="UpdateAuditKey"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[UpdateAuditKey]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ErrorCode]"
+                      cachedDataType="i4"
+                      cachedName="ErrorCode"
+                      lineageId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input].Columns[ErrorColumn]"
+                      cachedDataType="i4"
+                      cachedName="ErrorColumn"
+                      lineageId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\Load DimProduct\Row by Row"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              localeId="1033"
+              name="Row by Row"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimProduct]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS,ROWS_PER_BATCH = 1000</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">1000</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DimProduct\Row by Row.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MDWT 2008]"
+                  connectionManagerRefId="Package.ConnectionManagers[MDWT 2008]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="RedirectRow"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductSKU]"
+                      cachedDataType="i4"
+                      cachedName="ProductSKU"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductSKU]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSKU]"
+                      name="ProductSKU" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductName"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductDescr]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductDescr"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductDescr]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductDescr]"
+                      name="ProductDescr" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductModelID]"
+                      cachedDataType="i4"
+                      cachedName="ProductModelID"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                      name="ProductModelID" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductSubcategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductSubcategoryID"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategoryID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]"
+                      name="ProductSubcategoryID" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductCategoryID]"
+                      cachedDataType="i4"
+                      cachedName="ProductCategoryID"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                      name="ProductCategoryID" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductCategory]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductCategory"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategory]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategory]"
+                      name="ProductCategory" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductLine]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="ProductLine"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      name="ProductLine" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[Color]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Color"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[Class]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Class"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Class]"
+                      name="Class" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[Style]"
+                      cachedDataType="wstr"
+                      cachedLength="16"
+                      cachedName="Style"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Style]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Style]"
+                      name="Style" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[IsFinishedGood]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="IsFinishedGood"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[IsFinishedGood]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[IsFinishedGood]"
+                      name="IsFinishedGood" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[Size]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="Size"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Size]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Size]"
+                      name="Size" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[Weight]"
+                      cachedDataType="numeric"
+                      cachedName="Weight"
+                      cachedPrecision="8"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Weight]"
+                      name="Weight" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[DaysToManufacture]"
+                      cachedDataType="i4"
+                      cachedName="DaysToManufacture"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[DaysToManufacture]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[DaysToManufacture]"
+                      name="DaysToManufacture" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[StandardCost]"
+                      cachedDataType="cy"
+                      cachedName="StandardCost"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ListPrice]"
+                      cachedDataType="cy"
+                      cachedName="ListPrice"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ListPrice]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[SafetyStockLevel]"
+                      cachedDataType="i2"
+                      cachedName="SafetyStockLevel"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SafetyStockLevel]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SafetyStockLevel]"
+                      name="SafetyStockLevel" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ReorderPoint]"
+                      cachedDataType="i2"
+                      cachedName="ReorderPoint"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ReorderPoint]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ReorderPoint]"
+                      name="ReorderPoint" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[SellStartDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellStartDate"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellStartDate]"
+                      name="SellStartDate" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[SellEndDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="SellEndDate"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellEndDate]"
+                      name="SellEndDate" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductCurrentStatus]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="ProductCurrentStatus"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductCurrentStatus]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCurrentStatus]"
+                      name="ProductCurrentStatus" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[InsertAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="InsertAuditKey"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      name="InsertAuditKey" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[UpdateAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="UpdateAuditKey"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      name="UpdateAuditKey" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductModel]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductModel"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModel]"
+                      name="ProductModel" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[ProductSubcateogry]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="ProductSubcateogry"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategory]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcateogry]"
+                      name="ProductSubcateogry" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[SizeUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="SizeUnitMeasureCode"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SizeUnitOfMeasureCode]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SizeUnitMeasureCode]"
+                      name="SizeUnitMeasureCode" />
+                    <inputColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].Columns[WeightUnitMeasureCode]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="WeightUnitMeasureCode"
+                      externalMetadataColumnId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[WeightUnitOfMeasureCode]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[WeightUnitMeasureCode]"
+                      name="WeightUnitMeasureCode" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductKey]"
+                      dataType="i4"
+                      name="ProductKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductSKU]"
+                      dataType="i4"
+                      name="ProductSKU" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductDescr]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductDescr" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Model]"
+                      dataType="wstr"
+                      length="50"
+                      name="Model" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategoryID]"
+                      dataType="i4"
+                      name="ProductSubcategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductSubcategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductSubcategory" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategoryID]"
+                      dataType="i4"
+                      name="ProductCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="10"
+                      name="ProductLine" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="20"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="20"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Style]"
+                      dataType="wstr"
+                      length="20"
+                      name="Style" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[IsFinishedGood]"
+                      dataType="wstr"
+                      length="20"
+                      name="IsFinishedGood" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="20"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SizeUnitOfMeasureCode]"
+                      dataType="wstr"
+                      length="3"
+                      name="SizeUnitOfMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[WeightUnitOfMeasureCode]"
+                      dataType="wstr"
+                      length="5"
+                      name="WeightUnitOfMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[DaysToManufacture]"
+                      dataType="i4"
+                      name="DaysToManufacture" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SafetyStockLevel]"
+                      dataType="i2"
+                      name="SafetyStockLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ReorderPoint]"
+                      dataType="i2"
+                      name="ReorderPoint" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SellStartDate]"
+                      dataType="dbDate"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[SellEndDate]"
+                      dataType="dbDate"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[ProductCurrentStatus]"
+                      dataType="wstr"
+                      length="12"
+                      name="ProductCurrentStatus" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      dataType="i4"
+                      name="InsertAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      dataType="i4"
+                      name="UpdateAuditKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimProduct\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts the rows in a dataset."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">RC_Xtrct</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Load DimProduct\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimProduct\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\Load DimProduct\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimProduct\Row Metadata"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation;Microsoft SqlServer v9; (C) 2005 Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Updates column values using expressions"
+              name="Row Metadata"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load DimProduct\Row Metadata.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load DimProduct\Row Metadata.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      name="InsertAuditKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[AuditKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@AuditKey</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      name="UpdateAuditKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[AuditKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@AuditKey</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load DimProduct\Row Metadata.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load DimProduct\Source from complex query"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SqlServer v10; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Source from complex query"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [ProductID] AS ProductSKU
+      ,p.[Name] AS ProductName
+      ,p.[Name] AS ProductDescr
+      ,ISNULL(m.[ProductModelID],0) AS ProductModelID
+      ,ISNULL(m.[Name], N'Unknown Model') AS ProductModel
+      ,p.[ProductSubcategoryID]
+      ,s.[Name] AS ProductSubcateogry
+      ,s.[ProductCategoryID]
+      ,c.[Name] AS ProductCategory
+      ,CASE p.ProductLine 
+		WHEN 'T' THEN N'Touring'
+		WHEN 'M' THEN N'Mountain'
+		WHEN 'R' THEN N'Road'
+		WHEN 'S' THEN N'Accessory'
+		ELSE N'Bike part'
+	    END AS ProductLine
+      ,ISNULL(p.Color, N'None') AS [Color]
+      ,CASE p.[Class]
+		WHEN 'H' THEN N'High'
+		WHEN 'M' THEN N'Medium'
+		WHEN 'L' THEN N'Low'
+		ELSE N'No product class'
+		END AS [Class]
+      ,CASE p.[Style] 
+		WHEN 'M' THEN N'Men'
+		WHEN 'W' THEN N'Women'
+		WHEN 'U' THEN N'Unisex'
+		ELSE N'No product style'
+		END AS [Style]
+      ,CASE p.[FinishedGoodsFlag] 
+		WHEN 1 THEN N'Finished good'
+		ELSE N'Unfinished good'
+		END AS IsFinishedGood
+      ,CASE p.[Size] 
+		WHEN 'L' THEN N'Large'
+		WHEN 'M' THEN N'Medium'
+		WHEN 'S' THEN N'Small'
+		ELSE ISNULL(p.[Size], N'N/A')
+		END AS [Size]
+      ,cast(ISNULL(p.[SizeUnitMeasureCode], N'N/A') AS NCHAR(5)) AS SizeUnitMeasureCode
+      ,ISNULL(p.[Weight],0) AS [Weight]
+      ,CASE p.[WeightUnitMeasureCode]
+		WHEN 'LB' THEN N'pound'
+		WHEN 'G' then N'gram'
+		ELSE ISNULL(p.[WeightUnitMeasureCode], N'N/A') 
+		END AS WeightUnitMeasureCode
+      ,p.[DaysToManufacture]
+      ,p.[StandardCost]
+      ,p.[ListPrice]
+      ,p.[SafetyStockLevel]
+      ,p.[ReorderPoint]
+      ,p.[SellStartDate]
+      ,ISNULL(p.[SellEndDate], '12/31/9999') AS [SellEndDate]
+      ,CASE 
+		WHEN SellEndDate IS NULL THEN N'Current'
+		ELSE N'Discontinued'
+		END AS ProductCurrentStatus
+  FROM [StageProduct] p
+  INNER JOIN StageProductSubcategory s ON (p.ProductSubcategoryID=s.ProductSubcategoryID)
+  INNER JOIN StageProductCategory c ON (s.ProductCategoryID=c.ProductCategoryID)
+  LEFT OUTER JOIN StageProductModel m ON (p.ProductModelID=m.ProductModelID)</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load DimProduct\Source from complex query.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[MDWT 2008 Stage]"
+                  connectionManagerRefId="Package.ConnectionManagers[MDWT 2008 Stage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSKU]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductSKU]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSKU]"
+                      name="ProductSKU"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductName]"
+                      name="ProductName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductDescr]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductDescr]"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductDescr]"
+                      name="ProductDescr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductModelID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModelID]"
+                      name="ProductModelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductModel]"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductModel]"
+                      name="ProductModel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductSubcategoryID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcategoryID]"
+                      name="ProductSubcategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcateogry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductSubcateogry]"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductSubcateogry]"
+                      name="ProductSubcateogry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategoryID]"
+                      name="ProductCategoryID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategory]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductCategory]"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCategory]"
+                      name="ProductCategory"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductLine]"
+                      length="9"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductLine]"
+                      name="ProductLine"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Color]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      length="15"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Color]"
+                      name="Color"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Class]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Class]"
+                      length="16"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Class]"
+                      name="Class"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Style]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Style]"
+                      length="16"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Style]"
+                      name="Style"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[IsFinishedGood]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[IsFinishedGood]"
+                      length="15"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[IsFinishedGood]"
+                      name="IsFinishedGood"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Size]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Size]"
+                      length="6"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Size]"
+                      name="Size"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SizeUnitMeasureCode]"
+                      length="5"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SizeUnitMeasureCode]"
+                      name="SizeUnitMeasureCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Weight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Weight]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[WeightUnitMeasureCode]"
+                      length="5"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[WeightUnitMeasureCode]"
+                      name="WeightUnitMeasureCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[DaysToManufacture]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[DaysToManufacture]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[DaysToManufacture]"
+                      name="DaysToManufacture"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[StandardCost]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[StandardCost]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[StandardCost]"
+                      name="StandardCost"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ListPrice]"
+                      name="ListPrice"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SafetyStockLevel]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SafetyStockLevel]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SafetyStockLevel]"
+                      name="SafetyStockLevel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ReorderPoint]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ReorderPoint]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ReorderPoint]"
+                      name="ReorderPoint"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SellStartDate]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellStartDate]"
+                      name="SellStartDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SellEndDate]"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[SellEndDate]"
+                      name="SellEndDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCurrentStatus]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductCurrentStatus]"
+                      length="12"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].Columns[ProductCurrentStatus]"
+                      name="ProductCurrentStatus"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductSKU]"
+                      dataType="i4"
+                      name="ProductSKU" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductName" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductDescr]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductDescr" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductModelID]"
+                      dataType="i4"
+                      name="ProductModelID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductModel]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductModel" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductSubcategoryID]"
+                      dataType="i4"
+                      name="ProductSubcategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductSubcateogry]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductSubcateogry" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductCategoryID]"
+                      dataType="i4"
+                      name="ProductCategoryID" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      name="ProductCategory" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductLine]"
+                      dataType="wstr"
+                      length="9"
+                      name="ProductLine" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      name="Color" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Class]"
+                      dataType="wstr"
+                      length="16"
+                      name="Class" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Style]"
+                      dataType="wstr"
+                      length="16"
+                      name="Style" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[IsFinishedGood]"
+                      dataType="wstr"
+                      length="15"
+                      name="IsFinishedGood" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Size]"
+                      dataType="wstr"
+                      length="6"
+                      name="Size" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      length="5"
+                      name="SizeUnitMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[Weight]"
+                      dataType="numeric"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      length="5"
+                      name="WeightUnitMeasureCode" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[DaysToManufacture]"
+                      dataType="i4"
+                      name="DaysToManufacture" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[StandardCost]"
+                      dataType="cy"
+                      name="StandardCost" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ListPrice]"
+                      dataType="cy"
+                      name="ListPrice" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SafetyStockLevel]"
+                      dataType="i2"
+                      name="SafetyStockLevel" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ReorderPoint]"
+                      dataType="i2"
+                      name="ReorderPoint" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      name="SellStartDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      name="SellEndDate" />
+                    <externalMetadataColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output].ExternalColumns[ProductCurrentStatus]"
+                      dataType="wstr"
+                      length="12"
+                      name="ProductCurrentStatus" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductSKU]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductSKU]"
+                      name="ProductSKU" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                      name="ProductName" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductDescr]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductDescr]"
+                      name="ProductDescr" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductModelID]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductModelID]"
+                      name="ProductModelID" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductModel]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductModel]"
+                      name="ProductModel" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductSubcategoryID]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductSubcategoryID]"
+                      name="ProductSubcategoryID" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductSubcateogry]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductSubcateogry]"
+                      name="ProductSubcateogry" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductCategoryID]"
+                      name="ProductCategoryID" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductCategory]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductCategory]"
+                      name="ProductCategory" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductLine]"
+                      dataType="wstr"
+                      length="9"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductLine]"
+                      name="ProductLine" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Color]"
+                      name="Color" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Class]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Class]"
+                      name="Class" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Style]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Style]"
+                      name="Style" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[IsFinishedGood]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[IsFinishedGood]"
+                      name="IsFinishedGood" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Size]"
+                      dataType="wstr"
+                      length="6"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Size]"
+                      name="Size" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SizeUnitMeasureCode]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SizeUnitMeasureCode]"
+                      name="SizeUnitMeasureCode" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Weight]"
+                      dataType="numeric"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[Weight]"
+                      name="Weight"
+                      precision="8"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[WeightUnitMeasureCode]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[WeightUnitMeasureCode]"
+                      name="WeightUnitMeasureCode" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[DaysToManufacture]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[DaysToManufacture]"
+                      name="DaysToManufacture" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[StandardCost]"
+                      dataType="cy"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[StandardCost]"
+                      name="StandardCost" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      dataType="cy"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ListPrice]"
+                      name="ListPrice" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SafetyStockLevel]"
+                      dataType="i2"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SafetyStockLevel]"
+                      name="SafetyStockLevel" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ReorderPoint]"
+                      dataType="i2"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ReorderPoint]"
+                      name="ReorderPoint" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SellStartDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SellStartDate]"
+                      name="SellStartDate" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SellEndDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[SellEndDate]"
+                      name="SellEndDate" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductCurrentStatus]"
+                      dataType="wstr"
+                      length="12"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ProductCurrentStatus]"
+                      name="ProductCurrentStatus" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load DimProduct.Paths[Derived Column Output]"
+              endId="Package\Load DimProduct\Row Count.Inputs[Row Count Input 1]"
+              name="Derived Column Output"
+              startId="Package\Load DimProduct\Row Metadata.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load DimProduct.Paths[OLE DB Destination Error Output]"
+              endId="Package\Load DimProduct\Row by Row.Inputs[OLE DB Destination Input]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Load DimProduct\Bulk Load.Outputs[OLE DB Destination Error Output]" />
+            <path
+              refId="Package\Load DimProduct.Paths[OLE DB Destination Error Output1]"
+              endId="Package\Load DimProduct\Count Errors.Inputs[Row Count Input 1]"
+              name="OLE DB Destination Error Output"
+              startId="Package\Load DimProduct\Row by Row.Outputs[OLE DB Destination Error Output]" />
+            <path
+              refId="Package\Load DimProduct.Paths[OLE DB Source Output]"
+              endId="Package\Load DimProduct\Row Metadata.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Load DimProduct\Source from complex query.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Load DimProduct.Paths[Row Count Output 1]"
+              endId="Package\Load DimProduct\Bulk Load.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Load DimProduct\Row Count.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\Load DimProduct.Paths[Row Count Output 11]"
+              endId="Package\Load DimProduct\Log Error Rows.Inputs[Raw File Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\Load DimProduct\Count Errors.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Post RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{a9d6ad26-7c98-453c-a5ff-9d7e508a569c}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Post RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"SELECT COUNT(*) AS RowCnt FROM "+ @TableName</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05BA99CF-C0DD-42CC-BCD4-7F38D82F0061}"
+          SQLTask:SqlStatementSource="SELECT COUNT(*) AS RowCnt FROM DimProduct"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Pre-delete rows"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{e61795be-2a7d-46e4-ab2e-214cec78badc}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Pre-delete rows"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server v9; © 2004 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:LoggingOptions
+        DTS:FilterKind="0" />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"DELETE FROM  " + @TableName + " WHERE " + @PKName + " &gt;= 0"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05BA99CF-C0DD-42CC-BCD4-7F38D82F0061}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="DELETE FROM  DimProduct WHERE ProductKey &gt;= 0" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Prior RowCnt"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{ea967252-cf6e-4e9d-828a-bc0ac28b066a}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Prior RowCnt"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:PropertyExpression
+        DTS:Name="SqlStatementSource">"SELECT COUNT(*) AS RowCnt FROM " + @TableName</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05BA99CF-C0DD-42CC-BCD4-7F38D82F0061}"
+          SQLTask:SqlStatementSource="SELECT COUNT(*) AS RowCnt FROM DimProduct"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="0"
+            SQLTask:DtsVariableName="User::RowCount" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Update AuditDim row"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{3a5683d4-6ef7-44a5-a027-94793505b270}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Update AuditDim row"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; Microsoft SQL Server 2008; © 2007 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{05BA99CF-C0DD-42CC-BCD4-7F38D82F0061}"
+          SQLTask:SqlStatementSource="UPDATE [DimAudit]&#xA;SET ExecStopDT = SYSDATETIME()&#xA; , ExtractRowCnt = @RC_Xtrct&#xA; ,TableFinalRowCnt = @RowCount&#xA; ,ErrorRowCnt = @RC_Error&#xA; ,SuccessfulProcessingInd='Y'&#xA;WHERE AuditKey = @AuditKey" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RowCount"
+            SQLTask:DtsVariableName="User::RowCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Error"
+            SQLTask:DtsVariableName="User::RC_Error"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="AuditKey"
+            SQLTask:DtsVariableName="User::AuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="RC_Xtrct"
+            SQLTask:DtsVariableName="User::RC_Xtrct"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="11"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F9A7B4E9-E72C-4F9D-A1F0-658536010D7E}"
+      DTS:From="Package\Pre-delete rows"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Get AuditKey" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{A25FB765-447B-445E-96C8-C64E3AF47923}"
+      DTS:From="Package\Load DimProduct"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Post RowCnt" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{22869EB5-D981-4E22-899A-B8D6ED642069}"
+      DTS:From="Package\Prior RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Pre-delete rows" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{39F43685-7557-402D-8467-AEB0CC01E902}"
+      DTS:From="Package\Post RowCnt"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Update AuditDim row" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{042D1C39-816D-4A6D-9A4B-80FCED2D7C5F}"
+      DTS:From="Package\Get AuditKey"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Load DimProduct" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssge="clr-namespace:Microsoft.SqlServer.Graph.Extended;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Get AuditKey"
+          TopLeft="5.5,168.066037735849" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Load DimProduct"
+          TopLeft="19.8773584905661,300.669811320755" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Post RowCnt"
+          TopLeft="11.7641509433962,405.198113207547" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Pre-delete rows"
+          TopLeft="10.2924528301886,86.0283018867924" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Prior RowCnt"
+          TopLeft="13.7641509433962,5.5" />
+        <NodeLayout
+          Size="136,44"
+          Id="Package\Update AuditDim row"
+          TopLeft="15.7641509433962,501.047169811321" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="78.1792452830188,129.952830188679">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-4.79245283018867,38.1132075471698"
+              Start="0,0"
+              End="-4.79245283018867,30.6132075471698">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.0566037735849" />
+                  <mssgle:LineSegment
+                    End="-4.79245283018867,19.0566037735849" />
+                  <mssgle:LineSegment
+                    End="-4.79245283018867,30.6132075471698" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="87.7641509433962,344.594339622642">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-8.11320754716979,60.6037735849056"
+              Start="0,0"
+              End="-8.11320754716979,53.1037735849056">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,30.3018867924528" />
+                  <mssgle:LineSegment
+                    End="-8.11320754716979,30.3018867924528" />
+                  <mssgle:LineSegment
+                    End="-8.11320754716979,53.1037735849056" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="81.6509433962264,49.4245283018868">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="-3.47169811320759,36.6037735849057"
+              Start="0,0"
+              End="-3.47169811320759,29.1037735849057">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.3018867924528" />
+                  <mssgle:LineSegment
+                    End="-3.47169811320759,18.3018867924528" />
+                  <mssgle:LineSegment
+                    End="-3.47169811320759,29.1037735849057" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="79.6509433962264,449.122641509434">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="4,51.9245283018868"
+              Start="0,0"
+              End="4,44.4245283018868">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9622641509434" />
+                  <mssgle:LineSegment
+                    End="4,25.9622641509434" />
+                  <mssgle:LineSegment
+                    End="4,44.4245283018868" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="73.3867924528302,211.990566037736">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{x:Null}"
+              EndConnector="14.3773584905661,88.6792452830188"
+              Start="0,0"
+              End="14.3773584905661,81.1792452830188">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.3396226415094" />
+                  <mssgle:LineSegment
+                    End="14.3773584905661,44.3396226415094" />
+                  <mssgle:LineSegment
+                    End="14.3773584905661,81.1792452830188" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="During development, it's handy to pre-delete&#xD;&#xA;all the rows. In Production, Disable or delete&#xD;&#xA;this task."
+          ParentId="Package"
+          Size="226,92"
+          Id="ccbea6bc-8083-4555-883e-7d76eefeaad7"
+          TopLeft="162.933962264151,84.8207547169811">
+          <AnnotationLayout.FontInfo>
+            <mssge:FontInfo
+              Family="Tahoma"
+              Size="11.25"
+              Color="#FF080000">
+              <mssge:FontInfo.TextDecorations>
+                <av:TextDecorationCollection />
+              </mssge:FontInfo.TextDecorations>
+            </mssge:FontInfo>
+          </AnnotationLayout.FontInfo>
+        </AnnotationLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[MDWT 2008]">
+    <DataSourceID>MDWT 2008</DataSourceID>
+  </ConnectionManager>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[MDWT 2008 dotNet]">
+    <DataSourceID>MDWT 2008 dotNet</DataSourceID>
+  </ConnectionManager>
+  <ConnectionManager
+    design-time-name="Package.ConnectionManagers[MDWT 2008 Stage]">
+    <DataSourceID>MDWT 2008 Stage</DataSourceID>
+  </ConnectionManager>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
