@@ -26,7 +26,7 @@
   - **SSIS_Extract:** Data Extraction
   - **SSIS_DW:** Data Transformation and Loading
   
-### Aditional Files:
+### Additional Files:
   - Memo with all process and additional instrictions
   - Final strcuture
   
