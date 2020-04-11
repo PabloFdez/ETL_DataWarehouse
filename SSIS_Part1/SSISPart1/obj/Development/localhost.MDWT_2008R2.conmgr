@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="localhost.MDWT_2008R2"
+  DTS:DTSID="{914130C7-5F63-41B3-9F66-AF34AFF486DD}"
+  DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=localhost;Initial Catalog=MDWT_2008R2;Integrated Security=True;Application Name=SSIS-SSISPart1-{914130C7-5F63-41B3-9F66-AF34AFF486DD}localhost.MDWT_2008R2;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
