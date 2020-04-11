@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProductVersion>10.50.1600.1</ProductVersion>
+  <SchemaVersion>9.0.1.0</SchemaVersion>
+  <State>$base64$PFNvdXJjZUNvbnRyb2xJbmZvIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhtbG5zOmRkbDI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yIiB4bWxuczpkZGwyXzI9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDAzL2VuZ2luZS8yLzIiIHhtbG5zOmRkbDEwMF8xMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDA4L2VuZ2luZS8xMDAvMTAwIiB4bWxuczpkZGwyMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAiIHhtbG5zOmRkbDIwMF8yMDA9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vYW5hbHlzaXNzZXJ2aWNlcy8yMDEwL2VuZ2luZS8yMDAvMjAwIiB4bWxuczpkd2Q9Imh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vRGF0YVdhcmVob3VzZS9EZXNpZ25lci8xLjAiPg0KICA8RW5hYmxlZD5mYWxzZTwvRW5hYmxlZD4NCiAgPFByb2plY3ROYW1lPjwvUHJvamVjdE5hbWU+DQogIDxBdXhQYXRoPjwvQXV4UGF0aD4NCiAgPExvY2FsUGF0aD48L0xvY2FsUGF0aD4NCiAgPFByb3ZpZGVyPjwvUHJvdmlkZXI+DQo8L1NvdXJjZUNvbnRyb2xJbmZvPg==</State>
+  <Database>
+    <Name>MDWT_AdventureWorks_SSIS.database</Name>
+    <FullPath>MDWT_AdventureWorks_SSIS.database</FullPath>
+  </Database>
+  <Cubes />
+  <Dimensions />
+  <DataSources>
+    <ProjectItem>
+      <Name>MDWT 2008.ds</Name>
+      <FullPath>MDWT 2008.ds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>MDWT 2008 Stage.ds</Name>
+      <FullPath>MDWT 2008 Stage.ds</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>MDWT 2008 dotNet.ds</Name>
+      <FullPath>MDWT 2008 dotNet.ds</FullPath>
+    </ProjectItem>
+  </DataSources>
+  <DataSourceViews />
+  <MiningModels />
+  <Roles />
+  <Miscellaneous>
+    <ProjectItem>
+      <Name>TruncateTables.sql</Name>
+      <FullPath>TruncateTables.sql</FullPath>
+    </ProjectItem>
+  </Miscellaneous>
+  <Configurations>
+    <Configuration>
+      <Name>Development</Name>
+      <Options>
+        <OutputPath>bin</OutputPath>
+        <ConnectionMappings>
+          <ConfigurationSetting>
+            <Id>MDWT 2008</Id>
+            <Name>MDWT 2008</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=LocalHost;Integrated Security=SSPI;Initial Catalog=MDWT_2008R2</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>MDWT 2008 Stage</Id>
+            <Name>MDWT 2008 Stage</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI10.1;Data Source=LocalHost;Integrated Security=SSPI;Initial Catalog=MDWT_2008R2_Stage</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>MDWT 2008 dotNet</Id>
+            <Name>MDWT 2008 dotNet</Name>
+            <Value xsi:type="xsd:string">Data Source=LocalHost;Initial Catalog=MDWT_2008R2;Integrated Security=True</Value>
+          </ConfigurationSetting>
+        </ConnectionMappings>
+        <ConnectionProviderMappings>
+          <ConfigurationSetting>
+            <Id>MDWT 2008 dotNet</Id>
+            <Name>MDWT 2008 dotNet</Name>
+            <Value xsi:type="xsd:string">System.Data.SqlClient</Value>
+          </ConfigurationSetting>
+        </ConnectionProviderMappings>
+        <ConnectionSecurityMappings>
+          <ConfigurationSetting>
+            <Id>MDWT 2008</Id>
+            <Name>MDWT 2008</Name>
+            <Value xsi:type="xsd:int">0</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>MDWT 2008 Stage</Id>
+            <Name>MDWT 2008 Stage</Name>
+            <Value xsi:type="xsd:int">0</Value>
+          </ConfigurationSetting>
+          <ConfigurationSetting>
+            <Id>MDWT 2008 dotNet</Id>
+            <Name>MDWT 2008 dotNet</Name>
+            <Value xsi:type="xsd:int">0</Value>
+          </ConfigurationSetting>
+        </ConnectionSecurityMappings>
+        <DatabaseStorageLocations />
+      </Options>
+    </Configuration>
+  </Configurations>
+  <DTSPackages>
+    <DtsPackage FormatVersion="3">
+      <Name>RUN THIS TO LOAD ALL.dtsx</Name>
+      <FullPath>RUN THIS TO LOAD ALL.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Date.dtsx</Name>
+      <FullPath>Date.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>OrderInfo.dtsx</Name>
+      <FullPath>OrderInfo.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Promotion.dtsx</Name>
+      <FullPath>Promotion.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Currency.dtsx</Name>
+      <FullPath>Currency.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Employee.dtsx</Name>
+      <FullPath>Employee.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Product_SQL.dtsx</Name>
+      <FullPath>Product_SQL.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Customer.dtsx</Name>
+      <FullPath>Customer.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>ExchangeRates.dtsx</Name>
+      <FullPath>ExchangeRates.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Orders_SQL.dtsx</Name>
+      <FullPath>Orders_SQL.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Product_SSIS.dtsx</Name>
+      <FullPath>Product_SSIS.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+    <DtsPackage FormatVersion="3">
+      <Name>Orders_Lookups.dtsx</Name>
+      <FullPath>Orders_Lookups.dtsx</FullPath>
+      <References />
+    </DtsPackage>
+  </DTSPackages>
+</Project>

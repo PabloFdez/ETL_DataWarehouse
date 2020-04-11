@@ -1,0 +1,19 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "MDWT_2008", "MDWT_AdventureWorks_SSIS\MDWT_2008.dtproj", "{FF4CBA70-5DDC-4E9A-9933-12E8EB51BD6D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF4CBA70-5DDC-4E9A-9933-12E8EB51BD6D}.Development|Default.ActiveCfg = Development
+		{FF4CBA70-5DDC-4E9A-9933-12E8EB51BD6D}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
